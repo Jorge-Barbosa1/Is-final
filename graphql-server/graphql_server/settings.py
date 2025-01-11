@@ -56,8 +56,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
 
-APPEND_SLASH = False
-
 ROOT_URLCONF = 'graphql_server.urls'
 
 TEMPLATES = [
