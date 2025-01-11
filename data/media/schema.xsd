@@ -1,0 +1,34 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Data">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Item" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Invoice_ID" type="xs:string"/>
+                            <xs:element name="Branch" type="xs:string"/>
+                            <xs:element name="City" type="xs:string"/>
+                            <xs:element name="Customer_type" type="xs:string"/>
+                            <xs:element name="Gender" type="xs:string"/>
+                            <xs:element name="Product_line" type="xs:string"/>
+                            <xs:element name="Unit_price" type="xs:decimal"/>
+                            <xs:element name="Quantity" type="xs:int"/>
+                            <xs:element name="Tax_5" type="xs:decimal"/>
+                            <xs:element name="Total" type="xs:decimal"/>
+                            <xs:element name="Date" type="xs:string"/>
+                            <xs:element name="Time" type="xs:string"/>
+                            <xs:element name="Payment" type="xs:string"/>
+                            <xs:element name="cogs" type="xs:decimal"/>
+                            <xs:element name="gross_margin_percentage" type="xs:decimal"/>
+                            <xs:element name="gross_income" type="xs:decimal"/>
+                            <xs:element name="Rating" type="xs:decimal"/>
+                            <xs:element name="Latitude" type="xs:decimal"/>
+                            <xs:element name="Longitude" type="xs:decimal"/>
+                        </xs:sequence>
+                        <xs:attribute name="ID" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

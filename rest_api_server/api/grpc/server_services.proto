@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package server_services;
+
+// Request message for sending a file
+message SendFileRequestBody {
+    bytes file = 1;
+    string file_mime = 2;
+    string file_name = 3;
+}
+
+// Response message for sending a file
+message SendFileResponseBody {
+    bool success = 1;
+}
+
+// Request for processing CSV to XML
+message CsvToXmlRequest {
+    bytes csv_file = 1;
+    string schema_path = 2; 
+}
+
+// Response for processed XML
+message CsvToXmlResponse {
+    string xml_content = 1;
+    string message = 2;
+}
+
+// Request for XML validation
+message XmlValidationRequest {
+    bytes xml_file = 1;
+}
+
+// Request for sending file chunks
+message SendFileChunksRequest {
+    bytes data = 1; 
+    string file_name = 2;
+}
+
+// Response for sending file chunks
+message SendFileChunksResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+// Request for filtering XML with XPath or XQuery
+message XmlFilterRequest {
+    string file_name = 1;  // Name of the XML file to filter
+    string xpath_query = 2; // The XPath or XQuery string
+}
+
+// Response for filtered XML
+message XmlFilterResponse {
+    repeated string results = 1; // Filtered XML content or values
+    string message = 2; // Optional message
+}
+
+// Request for exporting XML to PostgreSQL
+message ExportToDatabaseRequest {
+    string file_name = 1;  // Nome do arquivo XML a ser exportado
+}
+
+// Response for the export operation
+message ExportToDatabaseResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+// Service definition
+service SendFileService {
+    rpc SendFile (SendFileRequestBody) returns (SendFileResponseBody);
+
+    // Method to convert CSV to XML
+    rpc ProcessCsvToXml (CsvToXmlRequest) returns (CsvToXmlResponse);
+
+    // Method to validate XML against an XSD schema
+    rpc ValidateXml (XmlValidationRequest) returns (CsvToXmlResponse);
+
+    // Method to send file chunks
+    rpc SendFileChunks (stream SendFileChunksRequest) returns (SendFileChunksResponse);
+
+    rpc FilterXml (XmlFilterRequest) returns (XmlFilterResponse);
+    rpc ExportToDatabase (ExportToDatabaseRequest) returns (ExportToDatabaseResponse);
+}

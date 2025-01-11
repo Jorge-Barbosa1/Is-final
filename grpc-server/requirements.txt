@@ -1,0 +1,9 @@
+grpcio
+grpcio-tools
+pg8000
+xmlschema
+requests
+pika
+geopy
+uuid 
+lxml
