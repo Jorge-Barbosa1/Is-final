@@ -25,14 +25,14 @@ const UploadFilesDialog = React.forwardRef((props, ref) => {
     setFile(null);
   };
 
-  const handleDtdFileChange = (event: any) => {
+  /*const handleDtdFileChange = (event: any) => {
     const uploadedFile = event.target.files[0];
     setDtdFile(uploadedFile);
   };
 
   const handleDtdRemoveFile = () => {
     setDtdFile(null);
-  };
+  };*/
 
   React.useImperativeHandle(ref, () => ({
     handleClickOpen() {
@@ -48,7 +48,7 @@ const UploadFilesDialog = React.forwardRef((props, ref) => {
     const formData = new FormData()
 
     formData.append("file", file)
-    formData.append("dtd_file", dtd_file)
+    //formData.append("dtd_file", dtd_file)
 
     setLoading(true)
 
@@ -113,43 +113,6 @@ const UploadFilesDialog = React.forwardRef((props, ref) => {
                     </Button>
                 )}
             </Box>
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 2,
-                    p: 3,
-                    border: "1px solid #ccc",
-                    borderRadius: "8px",
-                    marginTop: 1
-                }}
-            >
-                <Typography variant="h6">Upload .dtd file</Typography>
-                {dtd_file ? (
-                    <>
-                        <Typography variant="body1">
-                            Selected File: {dtd_file.name}
-                        </Typography>
-                        <Button variant="contained" color="error" onClick={handleDtdRemoveFile}>
-                            Remove File
-                        </Button>
-                    </>) : (
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Select .dtd file
-                        <input
-                            type="file"
-                            hidden
-                            onChange={handleDtdFileChange}
-                            accept=".dtd"
-                        />
-                    </Button>
-                )}
-            </Box>
-
             {loading === true &&
                 <p>Loading request...</p>
             }

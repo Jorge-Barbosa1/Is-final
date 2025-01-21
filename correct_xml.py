@@ -2,17 +2,14 @@ import xml.etree.ElementTree as ET
 
 def robust_validate_and_correct_xml(input_file, output_file):
     """
-    Valida e corrige um arquivo XML, removendo caracteres inválidos e corrigindo a estrutura.
-
-    :param input_file: Caminho para o arquivo XML de entrada.
-    :param output_file: Caminho para o arquivo XML corrigido.
+    Valida e corrige um arquivo XML, remove caracteres inválidos e corrige a estrutura.
     """
     try:
-        # Leia o conteúdo do XML manualmente para tratar caracteres inválidos
+        # tratar caracteres inválidos
         with open(input_file, 'r', encoding='utf-8') as file:
             raw_content = file.read()
 
-        # Substitua caracteres inválidos manualmente
+        # Substituir caracteres inválidos 
         clean_content = raw_content.replace('%', '')  # Remove '%'
         clean_content = clean_content.replace('&', '&amp;')  # Escapa '&'
 
@@ -20,14 +17,14 @@ def robust_validate_and_correct_xml(input_file, output_file):
         root = ET.fromstring(clean_content)
         tree = ET.ElementTree(root)
 
-        # Remove espaços em branco extras de todos os textos
+        # Remove espaços em branco 
         for elem in root.iter():
             if elem.text:
                 elem.text = elem.text.strip()
             if elem.tail:
                 elem.tail = elem.tail.strip()
 
-        # Salva o XML corrigido
+        # Guarda o XML corrigido
         tree.write(output_file, encoding="utf-8", xml_declaration=True)
         print(f"XML corrigido salvo em: {output_file}")
         return True
