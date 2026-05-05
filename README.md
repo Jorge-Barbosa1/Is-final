@@ -1,9 +1,5 @@
 # Microservices Media Platform
 
-> **Suggested repo description:** *Distributed microservices platform — REST + GraphQL + gRPC APIs, RabbitMQ async workers, PostgreSQL, all orchestrated with Docker Compose.*
->
-> **Suggested topics:** `microservices`, `docker-compose`, `grpc`, `graphql`, `rest-api`, `rabbitmq`, `postgresql`, `django`, `python`, `distributed-systems`
-
 A media-platform backend implemented as a set of independent services that communicate over different protocols, designed to demonstrate distributed-systems patterns: synchronous gRPC for service-to-service calls, REST and GraphQL for client APIs, and a RabbitMQ-backed worker for asynchronous CSV ingestion.
 
 Built as the final project for the **Integrated Systems** course in the Bachelor's Degree in Informatics Engineering at IPVC.
